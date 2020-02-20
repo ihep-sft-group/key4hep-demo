@@ -43,3 +43,16 @@ $ make
 $ make install DESTDIR=$KEY4HEP
 ```
 
+Install Gaudi if not installed:
+```
+$ git clone https://gitlab.cern.ch/gaudi/Gaudi.git
+$ git checkout v32r2 # switch to a specific version
+$ mkdir build && cd build
+$ cmake ..
+$ make
+```
+
+
+
+
+
