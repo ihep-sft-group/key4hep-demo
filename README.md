@@ -59,19 +59,32 @@ $ make install DESTDIR=$KEY4HEP
 
 Install Gaudi if not installed:
 ```
-$ git clone https://gitlab.cern.ch/gaudi/Gaudi.git
-$ cd Gaudi
-$ git checkout v32r2 # switch to a specific version
-$ mkdir build && cd build
-$ cmake .. -DBoost_NO_BOOST_CMAKE=ON
+$ cd $KEY4HEP
+$ git clone https://gitlab.cern.ch/gaudi/Gaudi.git Gaudi-v32r2
+$ cd Gaudi-v32r2 && git checkout v32r2 && cd .. # switch to a specific version
+$ mkdir Gaudi-v32r2-build && cd Gaudi-v32r2-build
+$ cmake ../Gaudi-v32r2 -DBoost_NO_BOOST_CMAKE=ON
 $ make
 $ make install
 ```
 
 Note: during build Gaudi, set `Boost_NO_BOOST_CMAKE` to force using FindBoost.cmake.
 
+Setup envvar for Gaudi:
+```
+$ export CMAKE_PREFIX_PATH=$KEY4HEP/Gaudi-v32r2/InstallArea:$CMAKE_PREFIX_PATH
+```
 
+Install K4FWCore:
+```
+$ cd $KEY4HEP
+$ git clone https://github.com/key4hep/K4FWCore.git
+$ cd K4FWCore
+$ mkdir build && cd build
+$ cmake ..
+$ make
+$ make install
+```
 
-
-
+If no `CMAKE_INSTALL_PREFIX` specified, the libraries will be installed under `InstallArea`.
 
